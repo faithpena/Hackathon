@@ -13,7 +13,6 @@ class Control:
 	def set_car_data(self, name, cylinder, mpg, hp, weight, engine):
 		data = {}
 		data['name'] = name
-<<<<<<< HEAD
 		data['cylinder'] = cylinder
 		data['mpg'] = mpg
 		data['hp'] = hp
@@ -21,29 +20,11 @@ class Control:
 		data['engine'] = engine
 		self.car_data = data
 		print self.car_data
-	def set_dist_data(self, car_name, dist, luggage, gasType):
-=======
-		data['cylinder'] = int(cylinder)
-		data['cylinder'] = int(cylinder)
-		data['torque'] = int(torque)
-		data['hp'] = int(hp)
-		data['weight'] = int(weight)
-		data['engine'] = engine
-		self.car_data = data
-		print self.car_data
-<<<<<<< HEAD
 	def set_dist_data(self, car_name, dist, gasType):
->>>>>>> eee381f5dc93fec486cbd5c6ef468d883bf82704
 		data = {}
 		data['car_name'] = car_name
 		data['distance'] = int(dist)
 		data['luggage'] = int(luggage)
-=======
-		self.create_car()
-	def set_dist_data(self, dist, gasType):
-		data = {}
-		data['distance'] = int(dist)
->>>>>>> faith
 		data['gas_type'] = gasType
 		self.dist_data = data
 		print self.dist_data
