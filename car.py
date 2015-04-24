@@ -5,7 +5,7 @@ class Car:
 		self.hp = 0
 		self.cylinder = 0
 		self.torque = 0
-		self.engine = 0
+		self.engine = " "
 	def set_input(self, input):
 		self.name = input['name']
 		self.weight = input['weight']
