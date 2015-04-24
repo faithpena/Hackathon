@@ -15,13 +15,9 @@ class Control:
 		data['torque'] = torque
 		data['hp'] = hp
 		data['weight'] = weight
-		data['data'] = data
+		data['engine'] = engine
 		self.car_data = data
-<<<<<<< HEAD
 		print self.car_data
-=======
-		print sel.car_data
->>>>>>> aa
 	def set_dist_data(self, dist, gasType):
 		data = {}
 		data['distance'] = dist
