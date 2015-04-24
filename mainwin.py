@@ -21,6 +21,7 @@ class mainwin(Frame):
 		self.topwin.protocol("WM_DELETE_WINDOW", quit)
 		self.engineTypes = ["Intake Stroke", "Compression Stroke", "Combustion Stroke", "Exhaust Stroke"]
 		self.gasTypes = ["Gasoline", "Diesel", "Petrol", "Compressed Natural Gas", "Ethanol"]
+		self.cars = self.c.get_cars
 		self.initialize()
 	def initialize(self):
 		self.topFrameStyle = Style()
@@ -103,6 +104,14 @@ class mainwin(Frame):
 		
 		self.distanceFrame = Frame(self.distFrame, style = "dist.TFrame")
 		self.distanceFrame.pack()
+		self.carNameFrame = Frame(self.distanceFrame, style = "dist.TFrame")
+		self.carNameFrame.pack()
+		self.carNameLabel = Label(self.carNameFrame, text = "Car Name", style = "dist.TLabel")
+		self.carNameLabel.pack(side = LEFT, padx = 23, pady = 5)
+		self.carName = StringVar()
+		#self.carName.set(self.cars[0])
+		self.carNameCombo = Combobox(self.carNameFrame, textvariable=self.carName, values=self.cars, width = 20)
+		self.carNameCombo.pack(side = LEFT, pady = 5)
 		self.distanceLabel = Label(self.distanceFrame, text = "Distance", style = "dist.TLabel")
 		self.distanceLabel.pack(side = LEFT, padx = 23, pady = 5)
 		self.distanceEntry = Entry(self.distanceFrame, width = 22, state = DISABLED)

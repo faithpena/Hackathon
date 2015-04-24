@@ -14,22 +14,17 @@ class Control:
 		data['name'] = name
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		data['cylinder'] = ord(cylinder) - ord(0)
+=======
+		data['cylinder'] = int(cylinder)
+>>>>>>> faith
 		data['torque'] = ord(torque) - ord(0)
 		data['hp'] = ord(hp) - ord(0)
 		data['weight'] = ord(weight) - ord(0)
 		data['engine'] = engine
 		self.car_data = data
-		print sel.car_data
-=======
-		data['cylinder'] = cylinder
-		data['torque'] = torque
-		data['hp'] = hp
-		data['weight'] = weight
-		data['engine'] = engine
-		self.car_data = data
 		print self.car_data
->>>>>>> eb93270308c2fa499dee2b4973837475834c7e8b
 	def set_dist_data(self, dist, gasType):
 =======
 		data['cylinder'] = int(cylinder)
@@ -61,4 +56,4 @@ class Control:
 		car.set_input(self.car_data)
 		self.car_list[car.get_name()] = car
 	def get_cars(self):
-		return self.car_list
+		return self.car_list.keys()
