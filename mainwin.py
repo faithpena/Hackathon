@@ -115,7 +115,7 @@ class mainwin(Frame):
 		self.gType.set(self.gasTypes[0])
 		self.gasCombo = Combobox(self.gasFrame, textvariable=self.gType, values=self.gasTypes, width = 19, state = DISABLED)
 		self.gasCombo.pack(side = LEFT, pady = 5)
-		self.distButton = Button(self.distFrame, text = "Calculate!", state = DISABLED)
+		self.distButton = Button(self.distFrame, text = "Calculate!", state = DISABLED, command = self.distButtonclick)
 		self.distButton.pack(pady = 25)
 		
 		self.budgetFrameStyle = Style()
@@ -139,7 +139,7 @@ class mainwin(Frame):
 		self.gasType.set(self.gasTypes[0])
 		self.gCombo = Combobox(self.gFrame, textvariable=self.gasType, values=self.gasTypes, state = DISABLED)
 		self.gCombo.pack(side = LEFT, pady = 5)
-		self.budgetButton = Button(self.budgetFrame, text = "Calculate!", state = DISABLED)
+		self.budgetButton = Button(self.budgetFrame, text = "Calculate!", state = DISABLED, command = self.budgetButtonClick)
 		self.budgetButton.pack(pady = 25)
 	def addButtonClick(self):
 		self.distanceEntry.configure(state = NORMAL)
@@ -148,6 +148,12 @@ class mainwin(Frame):
 		self.gCombo.configure(state = NORMAL)
 		self.distButton.configure(state = NORMAL)
 		self.budgetButton.configure(state = NORMAL)
+		self.c.set_car_data(self.nameEntry.get(), self.cylinderEntry.get(), self.torqueEntry.get(), self.horsepowerEntry.get(), self.weightEntry.get(), self.engineCombo.get())
+	def distButtonClick(self):
+		self.c.set_dist_data(self.distanceEntry.get(), self.gasCombo.get())
+	def budgetButtonClick(self):
+		self.c.set_budget_data(self.budEntry.get(), self.gCombo.get())
+		
 		
 		
 		
