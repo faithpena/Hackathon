@@ -8,25 +8,28 @@ class Control:
 		self.car_data = {}
 		self.dist_data = {}
 		self.budget_data = {}
+		self.gas_list = {}
 	def set_car_data(self, name, cylinder, torque, hp, weight, engine):
 		data = {}
 		data['name'] = name
-		data['cylinder'] = ord(cylinder) - ord(0)
-		data['torque'] = ord(torque) - ord(0)
-		data['hp'] = ord(hp) - ord(0)
-		data['weight'] = ord(weight) - ord(0)
+		data['cylinder'] = int(cylinder)
+		data['torque'] = int(torque)
+		data['hp'] = int(hp)
+		data['weight'] = int(weight)
 		data['engine'] = engine
 		self.car_data = data
 		print sel.car_data
-	def set_dist_data(self, dist, gasType):
+	def set_dist_data(self, car_name, dist, gasType):
 		data = {}
-		data['distance'] = ord(dist) - ord(0)
+		data['car_name'] = car_name
+		data['distance'] = int(dist)
 		data['gas_type'] = gasType
 		self.dist_data = data
 		print self.dist_data
-	def set_budget_data(self, money, gasType):
+	def set_budget_data(self, car_name, money, gasType):
 		data = {}
-		data['money'] = ord(money) - ord(0)
+		data['car_name'] = car_name
+		data['money'] = int(money)
 		data['gas_type'] = gasType
 		self.budget_data = data
 		print self.budget_data
