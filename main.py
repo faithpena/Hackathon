@@ -6,7 +6,7 @@ from control import *
 
 def main():
    root = Tk()
-   c = control()
+   c = Control()
    home(root, c)
    root.mainloop()
 
