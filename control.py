@@ -17,6 +17,7 @@ class Control:
 		data['weight'] = weight
 		data['data'] = data
 		self.car_data = data
+		print self.car_data
 	def set_dist_data(self, dist, gasType):
 		data = {}
 		data['distance'] = dist
