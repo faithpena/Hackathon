@@ -56,7 +56,7 @@ class mainwin(Frame):
 		self.nameFrame = Frame(self.addFrame, style = "add.TFrame")
 		self.nameFrame.pack()
 		self.nameLabel = Label(self.nameFrame, text = "Car Name", style = "add.TLabel")
-		self.nameLabel.pack(side = LEFT, padx = 20, pady = 5)
+		self.nameLabel.pack(side = LEFT, padx = 15, pady = 5)
 		self.nameEntry = Entry(self.nameFrame)
 		self.nameEntry.pack(side = LEFT, pady = 5)
 		self.cylinderFrame = Frame(self.addFrame, style = "add.TFrame")
@@ -92,7 +92,7 @@ class mainwin(Frame):
 		self.engineCombo = Combobox(self.engineFrame, textvariable=self.eType, values=self.engineTypes, width = 17)
 		self.engineCombo.pack(side = LEFT, pady = 5)
 		self.addButton = Button(self.addFrame, text = "Add Car!", command = self.addButtonClick)
-		self.addButton.pack(pady = 25)
+		self.addButton.pack(pady = 10)
 		
 		self.distFrameStyle = Style()
 		self.distFrameStyle.configure("dist.TFrame", background = "light green")
