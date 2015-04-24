@@ -30,13 +30,9 @@ class Control:
 		print self.dist_data
 	def set_budget_data(self, car_name, money, luggage, gasType):
 		data = {}
-<<<<<<< HEAD
 		data['car_name'] = car_name
 		data['money'] = int(money)
 		data['luggage'] = int(luggage)
-=======
-		data['money'] = int(money)
->>>>>>> faith
 		data['gas_type'] = gasType
 		self.budget_data = data
 		print self.budget_data
@@ -59,8 +55,6 @@ class Control:
 		gas.set('Ethenol', 19)
 		self.gas_list['Ethenol'] = gas
 	def get_cars(self):
-<<<<<<< HEAD
-<<<<<<< HEAD
 		return self.car_list
 	def compute_budget(self):
 		car = self.car_list[self.budget_data['car_name']]
@@ -84,10 +78,3 @@ class Control:
 		money = gas_cost*gas_amt
 		output = {'Liters': gas_amt, 'Cost': money}
 		return output
-=======
-		return self.car_list.keys()
->>>>>>> eee381f5dc93fec486cbd5c6ef468d883bf82704
-=======
-		print self.car_list.keys()
-		return self.car_list.keys()
->>>>>>> faith
