@@ -10,9 +10,10 @@ from mainwin import *
 
 
 class home(Frame):
-   def __init__(self, topwin):
+   def __init__(self, topwin, c):
       Frame.__init__(self, topwin)
       self.topwin = topwin
+      self.c = c
       self.topwin.title("Gas Calculator")
       self.topwin.geometry("900x550")
       self.topwin.configure(background="sky blue")
@@ -47,6 +48,6 @@ class home(Frame):
    def startClick(self):
       self.top = Toplevel()
       self.topwin.withdraw()
-      mainwin(self.top, self.topwin)
+      mainwin(self.top, self.topwin, self.c)
 
 	  
