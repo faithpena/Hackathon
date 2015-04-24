@@ -9,7 +9,7 @@ class Control:
 		self.dist_data = {}
 		self.budget_data = {}
 		self.gas_list = {}
-		self.gas_list = create_gas_list()
+		self.gas_list = self.create_gas_list()
 	def set_car_data(self, name, cylinder, mpg, hp, weight, engine):
 		data = {}
 		data['name'] = name
@@ -20,7 +20,8 @@ class Control:
 		data['engine'] = engine
 		self.car_data = data
 		print self.car_data
-	def set_dist_data(self, car_name, dist, gasType):
+		self.create_car()
+	def set_dist_data(self, car_name, dist, luggage, gasType):
 		data = {}
 		data['car_name'] = car_name
 		data['distance'] = int(dist)
@@ -55,7 +56,7 @@ class Control:
 		gas.set('Ethenol', 19)
 		self.gas_list['Ethenol'] = gas
 	def get_cars(self):
-		return self.car_list
+		return self.car_list.keys()
 	def compute_budget(self):
 		car = self.car_list[self.budget_data['car_name']]
 		mpg = car.get_mpg()

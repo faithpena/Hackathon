@@ -182,12 +182,14 @@ class mainwin(Frame):
 		self.c.set_car_data(self.nameEntry.get(), self.cylinderEntry.get(), self.torqueEntry.get(), self.horseEntry.get(), self.weightEntry.get(), self.engineCombo.get())
 		self.cars = self.c.get_cars()
 		self.carName.set(self.cars[0])
+		self.carN.set(self.cars[0])
 		self.carNameCombo.configure(values = self.cars)
+		self.carNCombo.configure(values = self.cars)
 		print self.cars
 	def distButtonClick(self):
-		self.c.set_dist_data(self.distanceEntry.get(), self.luggageEntry.get(), self.gasCombo.get())
+		self.c.set_dist_data(self.carNameCombo.get(), self.distanceEntry.get(), self.luggageEntry.get(), self.gasCombo.get())
 	def budgetButtonClick(self):
-		self.c.set_budget_data(self.budEntry.get(), self.luggage1Entry.get(), self.gCombo.get())
+		self.c.set_budget_data(self.carNCombo.get(), self.budEntry.get(), self.luggage1Entry.get(), self.gCombo.get())
 		
 		
 		
