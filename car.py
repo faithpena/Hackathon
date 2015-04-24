@@ -15,3 +15,5 @@ class Car:
 		self.engine = input['engine']
 	def get_weight(self):
 		return self.weight
+	def get_name(self):
+		return self.name
