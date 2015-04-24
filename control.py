@@ -17,21 +17,24 @@ class Control:
 		data['weight'] = weight
 		data['data'] = data
 		self.car_data = data
+		print sel.car_data
 	def set_dist_data(self, dist, gasType):
 		data = {}
 		data['distance'] = dist
 		data['gas_type'] = gasType
 		self.dist_data = data
+		print self.dist_data
 	def set_budget_data(self, money, gasType):
 		data = {}
 		data['money'] = money
 		data['gas_type'] = gasType
-		self.dist_data = data
+		self.budget_data = data
+		print self.budget_data
 	def get_car_data(self):
 		return self.get_car_list
 	def create_car(self, car_data):
 		car = Car()
-		car.set_input(car_data)
-		self.car_list[car.get_name] = car
+		car.set_input(self.car_data)
+		self.car_list[car.get_name()] = car
 	def get_cars(self):
 		return self.car_list
