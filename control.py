@@ -13,6 +13,7 @@ class Control:
 	def set_car_data(self, name, cylinder, mpg, hp, weight, engine):
 		data = {}
 		data['name'] = name
+<<<<<<< HEAD
 		data['cylinder'] = cylinder
 		data['mpg'] = mpg
 		data['hp'] = hp
@@ -21,6 +22,17 @@ class Control:
 		self.car_data = data
 		print self.car_data
 	def set_dist_data(self, car_name, dist, luggage, gasType):
+=======
+		data['cylinder'] = int(cylinder)
+		data['cylinder'] = int(cylinder)
+		data['torque'] = int(torque)
+		data['hp'] = int(hp)
+		data['weight'] = int(weight)
+		data['engine'] = engine
+		self.car_data = data
+		print self.car_data
+	def set_dist_data(self, car_name, dist, gasType):
+>>>>>>> eee381f5dc93fec486cbd5c6ef468d883bf82704
 		data = {}
 		data['car_name'] = car_name
 		data['distance'] = int(dist)
@@ -55,6 +67,7 @@ class Control:
 		gas.set('Ethenol', 19)
 		self.gas_list['Ethenol'] = gas
 	def get_cars(self):
+<<<<<<< HEAD
 		return self.car_list
 	def compute_budget(self):
 		car = self.car_list[self.budget_data['car_name']]
@@ -78,3 +91,6 @@ class Control:
 		money = gas_cost*gas_amt
 		output = {'Liters': gas_amt, 'Cost': money}
 		return output
+=======
+		return self.car_list.keys()
+>>>>>>> eee381f5dc93fec486cbd5c6ef468d883bf82704
