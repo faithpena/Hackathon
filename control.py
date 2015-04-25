@@ -25,7 +25,7 @@ class Control:
 	def set_dist_data(self, car_name, dist, luggage, gasType):
 		data = {}
 		data['car name'] = car_name
-		data['distance'] = int(dist)
+		data['distance'] = float(dist)
 		data['luggage'] = int(luggage)
 		data['gas_type'] = gasType
 		self.dist_data = data
