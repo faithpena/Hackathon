@@ -5,7 +5,7 @@ from ttk import *
 from PIL import Image, ImageTk
 from tkFileDialog import *
 from sys import *
-from tkMessageBox import *
+import tkMessageBox
 
 
 class mainwin(Frame):
@@ -30,9 +30,9 @@ class mainwin(Frame):
 		self.topFrame.pack(fill = X)
 		self.topLabelStyle = Style()
 		self.topLabelStyle.configure("top.TLabel", background = "white", foreground = "black", font = "Consolas", height = 20, anchor = CENTER)
-		self.topLabel = Label(self.topFrame, text = "[ Some text here ]", padding = "20 20 20 10", style = "top.TLabel")
+		self.topLabel = Label(self.topFrame, text = "Budget your fuel and help the environment.", padding = "20 10 20 10", style = "top.TLabel")
 		self.topLabel.pack(fill = X)
-		self.topLabel1 = Label(self.topFrame, text = "More text. More text. More text. More text.", padding = "20 5 20 20", style = "top.TLabel")
+		self.topLabel1 = Label(self.topFrame, text = "Use the converter to estimate the amount and cost of the gas you will need while travelling,\n                and how far you can reach a destination given a fixed budget.", padding = "20 5 20 20", style = "top.TLabel")
 		self.topLabel1.pack(fill = X)
 		
 		self.borderStyle = Style()
@@ -41,14 +41,14 @@ class mainwin(Frame):
 		self.border.pack(fill = X)
 		
 		self.addStyle = Style()
-		self.addStyle.configure("add.TLabel", height = 5, background = "light yellow")
+		self.addStyle.configure("add.TLabel", height = 5, bg = "#5b373a")
 		self.distStyle = Style()
 		self.distStyle.configure("dist.TLabel", height = 5, background = "light green")
 		self.budgetStyle = Style()
-		self.budgetStyle.configure("budget.TLabel", height = 5, background = "light pink")
+		self.budgetStyle.configure("budget.TLabel", height = 5, bg = "#5b373a")
 		
 		self.addFrameStyle = Style()
-		self.addFrameStyle.configure("add.TFrame", background = "light yellow")
+		self.addFrameStyle.configure("add.TFrame", bg = "#5b373a")
 		self.addFrame = Frame(self.topwin, style = "add.TFrame", padding = "20 50 20 50")
 		self.addFrame.pack(side = LEFT, fill = BOTH)
 		self.addLabel = Label(self.addFrame, text = "ADD CAR", style = "add.TLabel")
@@ -133,7 +133,7 @@ class mainwin(Frame):
 		self.distButton.pack(pady = 25)
 		
 		self.budgetFrameStyle = Style()
-		self.budgetFrameStyle.configure("budget.TFrame", background = "light pink")
+		self.budgetFrameStyle.configure("budget.TFrame", bg = "#5b373a")
 		self.budgetFrame = Frame(self.topwin, style = "budget.TFrame", padding = "40 50 50 50")
 		self.budgetFrame.pack(side = LEFT, fill = BOTH)
 		self.budgetLabel = Label(self.budgetFrame, text = "BUDGET MODE", style = "budget.TLabel")
@@ -149,18 +149,18 @@ class mainwin(Frame):
 		self.carNCombo = Combobox(self.carNFrame, textvariable=self.carN, values=self.cars, width = 20, state = DISABLED)
 		self.carNCombo.pack(side = LEFT, pady = 5)
 		self.budLabel = Label(self.budFrame, text = "Budget", style = "budget.TLabel")
-		self.budLabel.pack(side = LEFT, padx = 28, pady = 5)
+		self.budLabel.pack(side = LEFT, padx = 26, pady = 5)
 		self.budEntry = Entry(self.budFrame, width = 19, state = DISABLED)
 		self.budEntry.pack(side = RIGHT, pady = 5)
-		self.luggage1Frame = Frame(self.budgetFrame, padding = "10 0 0 0", style = "budget.TFrame")
+		self.luggage1Frame = Frame(self.budgetFrame, padding = "9 0 0 0", style = "budget.TFrame")
 		self.luggage1Frame.pack()
-		self.luggage1Label = Label(self.luggage1Frame, text = "Luggage", style = "budget.TLabel")
+		self.luggage1Label = Label(self.luggage1Frame, text = "Luggage        ", style = "budget.TLabel")
 		self.luggage1Label.pack(side = LEFT, pady = 5)
-		self.luggage1Entry = Entry(self.luggage1Frame, width = 23, state = DISABLED)
-		self.luggage1Entry.pack(side = RIGHT, padx = 25, pady = 5)
+		self.luggage1Entry = Entry(self.luggage1Frame, width = 30, state = DISABLED)
+		self.luggage1Entry.pack(side = RIGHT, padx = 20, pady = 5)
 		self.gFrame = Frame(self.budgetFrame, style = "budget.TFrame")
 		self.gFrame.pack()
-		self.gLabel = Label(self.gFrame, text = "Gas Type", style = "budget.TLabel")
+		self.gLabel = Label(self.gFrame, text = "Gas Type    ", style = "budget.TLabel")
 		self.gLabel.pack(side = LEFT, padx = 22, pady = 5)
 		self.gasType = StringVar()
 		self.gasType.set(self.gasTypes[0])
@@ -180,6 +180,11 @@ class mainwin(Frame):
 		self.luggageEntry.configure(state = NORMAL)
 		self.luggage1Entry.configure(state = NORMAL)
 		self.c.set_car_data(self.nameEntry.get(), self.cylinderEntry.get(), self.torqueEntry.get(), self.horseEntry.get(), self.weightEntry.get(), self.engineCombo.get())
+		self.nameEntry.delete(0, 'end')
+		self.cylinderEntry.delete(0, 'end')
+		self.torqueEntry.delete(0, 'end')
+		self.horseEntry.delete(0, 'end')
+		self.weightEntry.delete(0, 'end')
 		self.cars = self.c.get_cars()
 		self.carName.set(self.cars[0])
 		self.carN.set(self.cars[0])
@@ -187,10 +192,23 @@ class mainwin(Frame):
 		self.carNCombo.configure(values = self.cars)
 		print self.cars
 	def distButtonClick(self):
-		self.c.set_dist_data(self.carNameCombo.get(), self.distanceEntry.get(), self.luggageEntry.get(), self.gasCombo.get())
+		dist = self.c.set_dist_data(self.carNameCombo.get(), self.distanceEntry.get(), self.luggageEntry.get(), self.gasCombo.get())
+		self.distanceEntry.delete(0, 'end')
+		self.luggageEntry.delete(0, 'end')
+		output = self.c.compute_distance(dist)
+		amt = str(output['Liters'])
+		d = str(output['Cost'])
+		message = amt + " liters and Php" + d
+		tkMessageBox.showinfo("Amount of Gasoline and Distance", message)
 	def budgetButtonClick(self):
-		self.c.set_budget_data(self.carNCombo.get(), self.budEntry.get(), self.luggage1Entry.get(), self.gCombo.get())
-		
+		budget = self.c.set_budget_data(self.carNCombo.get(), self.budEntry.get(), self.luggage1Entry.get(), self.gCombo.get())
+		self.budEntry.delete(0, 'end')
+		self.luggage1Entry.delete(0, 'end')
+		output = self.c.compute_budget(budget)
+		amt = str(output['Liters'])
+		d = str(output['Distance'])
+		message = amt + " liters and " + d + " kilometers"
+		tkMessageBox.showinfo("Amount of Gasoline and Distance", message)
 		
 		
 		
